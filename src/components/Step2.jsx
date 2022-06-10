@@ -10,7 +10,7 @@ import { PrimaryButton } from "./PrimaryButton";
 import * as yup from 'yup';
 import FormControlLabel from "@material-ui/core/FormControlLabel"
 import Checkbox from "@material-ui/core/Checkbox";
-import parsePhoneNumberFromString from "libphonenumber-js";
+import parsePhoneNumber from 'libphonenumber-js'
 // import { useData } from "./DataContext";
 
 
@@ -43,7 +43,7 @@ export const Step2 = () => {
     });
 
     const normalizePhoneNumber = (value) => {
-        const phoneNumber = parsePhoneNumberFromString(value)
+        const phoneNumber = parsePhoneNumber(value)
         if (!phoneNumber) {
             return value
         }
