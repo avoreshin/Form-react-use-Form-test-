@@ -1,67 +1,55 @@
+import { List, ListItemIcon, Paper } from "@material-ui/core";
+import { CloudUpload, InsertDriveFile } from "@material-ui/icons";
+import { toHaveValue } from "@testing-library/jest-dom/dist/matchers";
 import React from "react";
-import Dropzone from "react-dropzone";
-import { Controller } from "react-hook-form";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import CloudUpload from "@material-ui/icons/CloudUpload";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import InsertDriveFile from "@material-ui/icons/InsertDriveFile";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: "#eee",
-    textAlign: "center",
-    cursor: "pointer",
-    color: "#333",
-    padding: "10px",
-    marginTop: "20px",
-  },
-  icon: {
-    marginTop: "16px",
-    color: "#888888",
-    fontSize: "42px",
-  },
-}));
+import { useDropzone } from "react-dropzone";
 
 export const FileInput = ({ control, name }) => {
-  const styles = useStyles();
+  const { acceptedFiles, fileRejections, getRootProps, getInputProps } =
+    useDropzone({
+      accept: {
+        "image/jpeg": [],
+        "image/png": [],
+      },
+    });
+
+  const acceptedFileItems = acceptedFiles.map((file) => (
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+    </li>
+  ));
+
+  const fileRejectionItems = fileRejections.map(({ file, errors }) => (
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+      <ul>
+        {errors.map((e) => (
+          <li key={e.code}>{e.message}</li>
+        ))}
+      </ul>
+    </li>
+  ));
 
   return (
-    <Controller
-      control={control}
-      name={name}
-      defaultValue={[]}
-      shouldUnregister={true}
-      render={({ field: { onChange, onBlur, value } }) => (
-        <>
-          <Dropzone onDrop={onChange}>
-            {({ getRootProps, getInputProps }) => (
-              <Paper
-                variant="outlined"
-                className={styles.root}
-                {...getRootProps()}
-              >
-                <CloudUpload className={styles.icon} />
-                <input {...getInputProps()} name={name} onBlur={onBlur} />
-                <p>Drag 'n' drop files here, or click to select files</p>
-              </Paper>
-            )}
-          </Dropzone>
-          <List>
-            {value.map((f, index) => (
-              <ListItem key={index}>
-                <ListItemIcon>
-                  <InsertDriveFile />
-                </ListItemIcon>
-                <ListItemText primary={f.name} secondary={f.size} />
-              </ListItem>
-            ))}
-          </List>
-        </>
-      )}
-    />
+    <>
+      <Paper variant="outlined" {...getRootProps({ className: "dropzone" })}>
+        <CloudUpload />
+        <div>
+          <input {...getInputProps()} name={name} />
+          <p>Drag 'n' drop some files here, or click to select files</p>
+          <em>(Only *.jpeg and *.png images will be accepted)</em>
+        </div>
+      </Paper>
+      <List>
+        
+        <h4>Accepted files</h4>
+        <List>
+          <InsertDriveFile />
+          {acceptedFileItems}
+        </List>
+        <h4>Rejected files</h4>
+        <ul>{fileRejectionItems}</ul>
+      </List>
+    </>
   );
 };
