@@ -1,5 +1,5 @@
 import { List, ListItemIcon, Paper } from "@material-ui/core";
-import { CloudUpload, InsertDriveFile } from "@material-ui/icons";
+import { CloudUpload, InsertDriveFile } from '@mui/icons-material';
 import { toHaveValue } from "@testing-library/jest-dom/dist/matchers";
 import React from "react";
 import { useDropzone } from "react-dropzone";
