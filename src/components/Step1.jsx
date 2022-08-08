@@ -1,5 +1,5 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
+import {Typography} from "@mui/material";
 import { MainContainer } from "./MainContainer";
 import { Form } from "./Form";
 import { Input } from "./Input";

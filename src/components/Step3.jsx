@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core'
+import { Typography } from "@mui/material";
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { FileInput } from './FileInput'
@@ -7,14 +7,14 @@ import { MainContainer } from './MainContainer'
 
 export const Step3 = () => {
 
-const {control} = useForm;
+  const { control } = useForm;
 
   return (
     <MainContainer>
-        <Typography>🦄 Step3</Typography>
-        <Form>
-            <FileInput name="files" control={control}/>
-        </Form>
+      <Typography>🦄 Step3</Typography>
+      <Form>
+        <FileInput name="files" control={control} />
+      </Form>
     </MainContainer>
   )
 }

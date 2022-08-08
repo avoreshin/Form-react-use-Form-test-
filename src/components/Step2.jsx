@@ -1,15 +1,13 @@
-import Typography from "@material-ui/core/Typography";
-import React from 'react'
+import React,{useState} from 'react'
+import { Typography, Checkbox, FormControlLabel } from "@mui/material";
+import { useForm } from "react-hook-form";
+import * as yup from 'yup';
+import { yupResolver } from "@hookform/resolvers/yup";
 import { MainContainer } from './MainContainer'
 import { Form } from "./Form";
 import { Input } from "./Input";
 import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { PrimaryButton } from "./PrimaryButton";
-import * as yup from 'yup';
-import FormControlLabel from "@material-ui/core/FormControlLabel"
-import Checkbox from "@material-ui/core/Checkbox";
 import parsePhoneNumber from 'libphonenumber-js'
 // import { useData } from "./DataContext";
 
@@ -22,7 +20,7 @@ const schema = yup.object().shape({
 })
 
 export const Step2 = () => {
-    // const { setValues, data } = useState();
+    const { data, setData } = useState("");
 
     const navigate = useNavigate();
 
@@ -32,11 +30,11 @@ export const Step2 = () => {
         formState: { errors },
         watch,
     } = useForm({
-        // defaultValues: {
-        //     email: data.email,
-        //     hasPhone: data.hasPhone,
-        //     phoneNumber: data.phoneNumber,
-        // },
+        defaultValues: {
+            email: data.email,
+            hasPhone: data.hasPhone,
+            phoneNumber: data.phoneNumber,
+        },
         mode: "onBlur",
         resolver: yupResolver(schema)
 
@@ -55,7 +53,7 @@ export const Step2 = () => {
 
     const hasPhone = watch("hasPhone");
 
-    const onSubmit = (data) => {
+    const onSubmit = () => {
         navigate("/step3");
         // setValues(data);
     };
@@ -96,8 +94,8 @@ export const Step2 = () => {
                         type="tel"
                         label="Phone number"
                         name="phoneNumber"
-                        // error={!!errors.phoneNumber}
-                        // helperText={errors?.phoneNumber?.message}
+                        error={!!errors.phoneNumber}
+                        helperText={errors?.phoneNumber?.message}
                         onChange={(event) => {
                             event.target.value = normalizePhoneNumber(event.target.value);
                         }}

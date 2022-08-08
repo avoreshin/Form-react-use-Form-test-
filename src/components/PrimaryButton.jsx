@@ -1,6 +1,5 @@
 import React from "react";
-import { Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Button, makeStyles } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,10 +9,10 @@ const useStyles = makeStyles((theme) => ({
 
 export const PrimaryButton = ({ children, props }) => {
   const styles = useStyles()
-  
-    return (
+
+  return (
     <Button
-    className={styles.root}
+      className={styles.root}
       type="submit"
       fullWidth
       variant="contained"
