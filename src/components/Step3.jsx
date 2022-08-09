@@ -7,7 +7,7 @@ import { MainContainer } from './MainContainer'
 
 export const Step3 = () => {
 
-  const { control } = useForm;
+  const { control, handleSubmit } = useForm();
 
   return (
     <MainContainer>

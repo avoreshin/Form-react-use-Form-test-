@@ -1,25 +1,25 @@
 import React from "react";
-import { Button, makeStyles } from "@mui/material";
+import {Button} from "@mui/material";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
 
-export const PrimaryButton = ({ children, props }) => {
-  const styles = useStyles()
+export const PrimaryButton = ({children, props}) => {
+    const styles = {
+        root: {
 
-  return (
-    <Button
-      className={styles.root}
-      type="submit"
-      fullWidth
-      variant="contained"
-      color="primary"
-      {...props}
-    >
-      {children}
-    </Button>
-  );
+            // margin: 4
+        }
+    }
+
+    return (
+        <Button
+            style={styles.root}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            {...props}
+        >
+            {children}
+        </Button>
+    );
 };

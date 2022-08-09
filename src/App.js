@@ -7,13 +7,16 @@ import { Step3 } from './components/Step3';
 
 const Result = () => <>Result</>
 
+
+
+
 function App() {
   return (
     <>
-      <Header />
+      <Header/>
       <BrowserRouter>
         <Routes>
-          <Route exact path='/' element={<Step1/>} />
+          <Route index path='/' element={<Step1/>} />
           <Route path='/step2' element={<Step2 />} />
           <Route path='/step3' element={<Step3 />} />
           <Route path='/result' element={<Result />} />

@@ -1,22 +1,19 @@
 import React from "react";
-
-import { Container, makeStyles } from "@mui/material";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: theme.spacing(4),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center"
-  },
-}));
+import { Container } from "@mui/material";
 
 export const MainContainer = ({ children, ...props }) => {
-  const styles = useStyles();
+  const styles = {
+    root: {
+      marginTop: 4,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center"
+    },
+  }
 
   return (
     <Container
-      className={styles.root}
+      style={styles.root}
       container="main"
       maxWidth="xs"
       {...props}

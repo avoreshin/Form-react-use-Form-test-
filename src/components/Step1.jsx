@@ -29,6 +29,8 @@ export const Step1 = () => {
   });
 
   const onSubmit = (data) => {
+
+    console.log(data)
     navigate("/step2");
   };
   return (

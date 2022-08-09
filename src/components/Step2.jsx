@@ -1,15 +1,17 @@
-import React,{useState} from 'react'
-import { Typography, Checkbox, FormControlLabel } from "@mui/material";
+import React from 'react'
 import { useForm } from "react-hook-form";
-import * as yup from 'yup';
+import { Typography, Checkbox, FormControlLabel } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import parsePhoneNumber from 'libphonenumber-js'
 import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from 'yup';
+
+
 import { MainContainer } from './MainContainer'
 import { Form } from "./Form";
 import { Input } from "./Input";
-import { useNavigate } from "react-router-dom";
 import { PrimaryButton } from "./PrimaryButton";
-import parsePhoneNumber from 'libphonenumber-js'
-// import { useData } from "./DataContext";
+import { useData } from "../DataContext"
 
 
 const schema = yup.object().shape({
@@ -20,7 +22,7 @@ const schema = yup.object().shape({
 })
 
 export const Step2 = () => {
-    const { data, setData } = useState("");
+    const { data, setValues } = useData();
 
     const navigate = useNavigate();
 
@@ -53,9 +55,10 @@ export const Step2 = () => {
 
     const hasPhone = watch("hasPhone");
 
-    const onSubmit = () => {
+    const onSubmit = (data) => {
+        setValues(data);
+        console.log(data)
         navigate("/step3");
-        // setValues(data);
     };
 
     return (

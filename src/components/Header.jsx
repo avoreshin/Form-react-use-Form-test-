@@ -1,23 +1,22 @@
-import React from 'react'
-import { Typography, makeStyles } from "@mui/material";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    margin: theme.spacing(3, 0, 2),
-    textAlign: "center",
-    fontSize: "40px",
-    color: "deeppink",
-    textShadow: "1px 1px darkmagenta"
-  }
-}))
+import React from 'react';
+import { Typography } from "@mui/material";
 
 export const Header = () => {
 
-  const styles = useStyles()
+  const styles = {
+    root: {
+      textAlign: "center",
+      fontSize: "40px",
+      color: '#333',
+      textShadow: "1px 1px #333"
+    }
+  }
 
   return (
 
-    <Typography className={styles.root} component="h1" variant="h5">
+    <Typography
+        style={styles.root}
+        component="h1" variant="h5">
       Best form
     </Typography>
   )
