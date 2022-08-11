@@ -81,8 +81,8 @@ export const Step2 = () => {
                 <FormControlLabel
                     control={
                         <Checkbox
-                            defaultValue={hasPhone}
-                            defaultChecked={hasPhone}
+                            defaultValue={data.hasPhone}
+                            defaultChecked={data.hasPhone}
                             color="primary"
                             {...register("hasPhone")}
                             name="hasPhone" />

@@ -5,44 +5,43 @@ import Dropzone, {useDropzone} from "react-dropzone";
 import {Controller} from "react-hook-form"
 
 export const FileInput = ({control, name}) => {
-    const {acceptedFiles, fileRejections, getRootProps, getInputProps} =
-        useDropzone({
+    const {getRootProps, getInputProps} = useDropzone({
             accept: {
                 "image/jpeg": [],
                 "image/png": [],
             },
         });
 
-    const acceptedFileItems = acceptedFiles.map((file) => (
-        <li key={file.path}>
-            {file.path} - {file.size} bytes
-        </li>
-    ));
 
-    const fileRejectionItems = fileRejections.map(({file, errors}) => (
-        <li key={file.path}>
-            {file.path} - {file.size} bytes
-            <ul>
-                {errors.map((e) => (
-                    <li key={e.code}>{e.message}</li>
-                ))}
-            </ul>
-        </li>
-    ));
+    const Style  = {
+        root: {
+            background: "#eee",
+            textAlign: "center",
+            cursor: "pointer",
+            color: "#333",
+            padding: "10px",
+            marginTop:"20px"
+        },
+        icon: {
+            marginTop: "16px",
+            color:"#888",
+            fontSize: "42px"
+        }
+    }
 
     return (
         <Controller
             control={control}
             name={name}
             defaultValue={[]}
-            render={({ field: {onChange, onBlur, value}}) =>
+            render={({ field: {onChange, value}}) =>
                 <>
                     <Dropzone onDrop={onChange}>
                         {
-                            ({getRootProps, getInputProps}) => (<Paper variant="outlined" {...getRootProps()}>
-                                <CloudUpload/>
+                            ({getRootProps, getInputProps}) => (<Paper style = {Style.root} variant="outlined" {...getRootProps()}>
+                                <CloudUpload style={Style.icon}/>
                                 <input {...getInputProps()} name={name}/>
-                                <p>Drag 'n' drop some fles here, or click to select files</p>
+                                <p>Drag 'n' drop some files here, or click to select files</p>
                                 <em>(Only *.jpeg and *.png images will be accepted)</em>
                             </Paper>)
                         }
