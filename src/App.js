@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter, Routes, Link } from 'react-router-dom';
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Step1 } from './components/Step1';
 import { Step2 } from './components/Step2';

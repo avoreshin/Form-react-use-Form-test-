@@ -5,7 +5,7 @@ import Dropzone, {useDropzone} from "react-dropzone";
 import {Controller} from "react-hook-form"
 
 export const FileInput = ({control, name}) => {
-    const {getRootProps, getInputProps} = useDropzone({
+     useDropzone({
             accept: {
                 "image/jpeg": [],
                 "image/png": [],
@@ -34,9 +34,9 @@ export const FileInput = ({control, name}) => {
             control={control}
             name={name}
             defaultValue={[]}
-            render={({ field: {onChange, value}}) =>
+            render={({ field: {onChange, onBlur, value}}) =>
                 <>
-                    <Dropzone onDrop={onChange}>
+                    <Dropzone onDrop={onChange} >
                         {
                             ({getRootProps, getInputProps}) => (<Paper style = {Style.root} variant="outlined" {...getRootProps()}>
                                 <CloudUpload style={Style.icon}/>
