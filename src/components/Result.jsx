@@ -67,7 +67,7 @@ export const Result = () => {
                     </TableHead>
                     <TableBody>
                         {
-                            entries.toArray.map((entry) => (
+                            entries.map((entry) => (
                                 <TableRow key={entry[0]}>
                                     <TableCell>
                                         {entry[0]}

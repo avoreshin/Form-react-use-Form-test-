@@ -35,7 +35,7 @@ export const Step1 = () => {
     const onSubmit = (data) => {
         setValues(data)
         console.log(data)
-        navigate("/step3");
+        navigate("/step2");
     };
     return (
         <>
