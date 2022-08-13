@@ -8,7 +8,7 @@ import {PrimaryButton} from "./PrimaryButton";
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup'
 import {useNavigate} from "react-router-dom";
-import { useData } from "../DataContext"
+import {useData} from "../DataContext"
 
 const schema = yup.object().shape({
     firstName: yup
@@ -19,8 +19,7 @@ const schema = yup.object().shape({
 
 export const Step1 = () => {
 
-    const { data, setValues } = useData({});
-
+    const {data, setValues} = useData({});
     const navigate = useNavigate();
     const {
         register,

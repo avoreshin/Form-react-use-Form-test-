@@ -1,13 +1,9 @@
 import React from "react";
 import {Button} from "@mui/material";
 
-
 export const PrimaryButton = ({children, props}) => {
     const styles = {
-        root: {
-
-            // margin: 4
-        }
+        root: {}
     }
 
     return (

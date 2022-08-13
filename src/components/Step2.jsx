@@ -1,17 +1,17 @@
 import React from 'react'
-import { useForm } from "react-hook-form";
-import { Typography, Checkbox, FormControlLabel } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import {useForm} from "react-hook-form";
+import {Typography, Checkbox, FormControlLabel} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 import parsePhoneNumber from 'libphonenumber-js'
-import { yupResolver } from "@hookform/resolvers/yup";
+import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from 'yup';
 
 
-import { MainContainer } from './MainContainer'
-import { Form } from "./Form";
-import { Input } from "./Input";
-import { PrimaryButton } from "./PrimaryButton";
-import { useData } from "../DataContext"
+import {MainContainer} from './MainContainer'
+import {Form} from "./Form";
+import {Input} from "./Input";
+import {PrimaryButton} from "./PrimaryButton";
+import {useData} from "../DataContext"
 
 
 const schema = yup.object().shape({
@@ -22,14 +22,14 @@ const schema = yup.object().shape({
 })
 
 export const Step2 = () => {
-    const { data, setValues } = useData();
+    const {data, setValues} = useData();
 
     const navigate = useNavigate();
 
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: {errors},
         watch,
     } = useForm({
         defaultValues: {
@@ -57,7 +57,6 @@ export const Step2 = () => {
 
     const onSubmit = (data) => {
         setValues(data);
-        console.log(data)
         navigate("/step3");
     };
 
@@ -85,7 +84,7 @@ export const Step2 = () => {
                             defaultChecked={data.hasPhone}
                             color="primary"
                             {...register("hasPhone")}
-                            name="hasPhone" />
+                            name="hasPhone"/>
                     }
                     label="Do you have a phone"
                 />
