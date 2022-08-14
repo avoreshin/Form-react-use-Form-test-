@@ -26,7 +26,6 @@ export const Result = () => {
     const {files} = data;
 
     const onSubmit = async () => {
-        console.log('COUU')
         const formData = new FormData();
         if (data.files) {
             data.files.forEach((file) => {
@@ -35,16 +34,16 @@ export const Result = () => {
         }
 
         entries.forEach((entry) => {
-            formData.append(entry[0], entry[1].toString());
+            formData.append(entry[0], entry[1]);
         });
 
-        const res = await fetch(`http://localhost:4000`, {
+        const res = await fetch("http://localhost:4000/", {
             method: "POST",
-            body: formData
+            body: formData,
         });
 
         if (res.status === 200) {
-            await Swal.fire("Great job!", "You've passed the challenge!", "success");
+            Swal.fire("Great job!", "You've passed the challenge!", "success");
             setSuccess(true);
         }
     };
@@ -101,7 +100,6 @@ export const Result = () => {
                             </ListItem>
                         )
                     )
-
                 }
             </List>
             <PrimaryButton onClick={onSubmit}>Submit</PrimaryButton>

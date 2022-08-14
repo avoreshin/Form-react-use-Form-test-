@@ -1,7 +1,7 @@
 import React from "react";
 import {Button} from "@mui/material";
 
-export const PrimaryButton = ({children, props}) => {
+export const PrimaryButton = ({children, ...props}) => {
     const styles = {
         root: {}
     }
